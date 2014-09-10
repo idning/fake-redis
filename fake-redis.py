@@ -151,7 +151,7 @@ class RedisHandler(SocketServer.BaseRequestHandler):
             processer = self.cmdmap[cmd]
             processer(argv)
 
-class FackRedis(SocketServer.ThreadingMixIn, SocketServer.TCPServer):
+class FakeRedis(SocketServer.ThreadingMixIn, SocketServer.TCPServer):
     def __init__(self, host, port):
         self.allow_reuse_address = True
 
@@ -164,5 +164,5 @@ class FackRedis(SocketServer.ThreadingMixIn, SocketServer.TCPServer):
 if __name__ == "__main__":
     HOST, PORT = "localhost", 9999
 
-    FackRedis(HOST, PORT).run()
+    FakeRedis(HOST, PORT).run()
 
